@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shovsepy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/28 20:16:01 by shovsepy          #+#    #+#             */
-/*   Updated: 2021/02/02 17:50:31 by shovsepy         ###   ########.fr       */
+/*   Created: 2025/01/09 17:48:21 by hirwatan          #+#    #+#             */
+/*   Updated: 2025/01/09 17:53:14 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
 
-int	ft_isalpha(int c)
+typedef struct s_stack
 {
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'));
-}
+	/* data */
+}	t_stack;

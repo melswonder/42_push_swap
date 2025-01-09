@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shovsepy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/28 20:13:17 by shovsepy          #+#    #+#             */
-/*   Updated: 2021/02/02 17:38:30 by shovsepy         ###   ########.fr       */
+/*   Created: 2025/01/09 17:48:02 by hirwatan          #+#    #+#             */
+/*   Updated: 2025/01/09 17:49:57 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	*ft_bzero(void *s, size_t len)
+int error_check(int argc,char *argv[])
 {
-	size_t			i;
-	unsigned char	*str2;
-
-	i = 0;
-	str2 = (unsigned char *)s;
-	while (i < len)
+	if(ac == 2)
 	{
-		str2[i] = 0;
-		i++;
+		
 	}
-	return (str2 = s);
+}
+
+int main(int argc,char *argv[])
+{
+	error_check(argc,argv);
 }
