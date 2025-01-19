@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: loremipsum <loremipsum@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:02 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/01/09 17:49:57 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:56:09 by loremipsum       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void new_stack(t_stack	)
 
 int error_check(int argc,char *argv[])
 {
