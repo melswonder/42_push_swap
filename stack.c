@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loremipsum <loremipsum@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 17:01:05 by loremipsum        #+#    #+#             */
-/*   Updated: 2025/01/31 21:27:15 by loremipsum       ###   ########.fr       */
+/*   Updated: 2025/02/01 15:41:27 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,13 @@ void stack_allow(t_stack *a, t_stack *b, int argc, char *argv[])
     {
         value = ft_atoi(argv[i]);
         insert_back_a(a, value, i);
-        insert_back_b(a,i);
         i++;
     }
+
+    
     print_list(a);
     printf("こんばんは\n");
-    print_list(b);
+    // print_list(b);
     free_list(a);
     free_list(b);
 }

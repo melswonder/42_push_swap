@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_new_delete.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loremipsum <loremipsum@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 16:41:35 by loremipsum        #+#    #+#             */
-/*   Updated: 2025/01/31 21:22:48 by loremipsum       ###   ########.fr       */
+/*   Updated: 2025/02/01 15:40:36 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_stack *stack_new()
 	dummy = malloc(sizeof(t_stack));
 	dummy->value = 0;
 	dummy->number = 0;
-	dummy->prev = dummy;
-	dummy->next = dummy;
+	dummy->prev = NULL;
+	dummy->next = NULL;
 	return (dummy);
 }
