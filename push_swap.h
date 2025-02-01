@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loremipsum <loremipsum@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:21 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/01/31 20:04:08 by loremipsum       ###   ########.fr       */
+/*   Updated: 2025/02/01 20:03:47 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
+# include <limits.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 // typedef struct s_node
 // {
@@ -25,14 +25,23 @@
 
 typedef struct s_stack
 {
-	int			value;
-	int			number;
-	struct s_stack* prev;
-  	struct s_stack* next;
-} t_stack;
+	int				value;
+	int				rank;
+	struct s_stack	*prev;
+	struct s_stack	*next;
+}					t_stack;
 
-t_stack *stack_new();
-int	ft_atoi(const char *nptr);
-void stack_allow(t_stack *a, t_stack *b, int argc, char *argv[]);
+typedef struct s_front
+{
+	t_stack			*front;
+}					t_front;
+
+void				stack_new(t_front *dummy);
+int					ft_atoi(const char *nptr);
+void				free_list(t_front *dummy);
+void				print_list(t_stack *dummy);
+void				stack_allow(t_front *a, int argc, char *argv[]);
+
+void				sa(t_stack *a);
 
 #endif

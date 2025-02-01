@@ -1,13 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct s_stack
-{
-    int value;
-    int number;
-    struct s_stack *prev;
-    struct s_stack *next;
-} t_stack;
+#include "push_swap.h"
 
 // リストの初期化
 t_stack *create_circular_list()
@@ -45,7 +38,7 @@ void print_list(t_stack *dummy)
 }
 
 // リストのメモリ解放
-void free_list(t_stack *dummy)
+void free_list(t_front *dummy)
 {
     t_stack *current = dummy->next;
     while (current != dummy)
