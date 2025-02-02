@@ -6,7 +6,7 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:21 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/02 12:06:21 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:08:08 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,16 @@ typedef struct s_list
 	t_node			*front;
 }					t_list;
 
-int					ft_atoi(const char *nptr);
-void				free_list(t_list *dummy);
-void				print_list(t_list *dummy);
 void				stack_input(t_list *a, int argc, char *argv[]);
 void				push_front(t_list *a, t_node *new_node);
 void				push_back(t_list *a, int value);
-void				sa(t_node *a);
+
+void				stack_rank(t_list *a);
+void				print_list(t_list *dummy);
+void				free_list(t_list *dummy);
+
+int					ft_atoi(const char *nptr);
+void				sa(t_list *a);
+void				ra(t_list *a);
 
 #endif
