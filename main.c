@@ -6,7 +6,7 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:02 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/02 17:08:34 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:30:34 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	main(int argc, char *argv[])
 	// push_swap(&a,&b);
 	print_list(&a);
 	ra(&a);
+	print_list(&a);
+	rra(&a);
 	print_list(&a);
 	free_list(&a);
 	return (0);

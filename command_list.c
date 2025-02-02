@@ -6,7 +6,7 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:51:23 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/02 17:10:29 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:30:18 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,58 +71,38 @@ void	sa(t_list *a) //いっこしたと入れ替える
 
 void	ra(t_list *a)
 {
-	int swap;
-	swap = a->front->value;
-	a->front->value = a->front->prev->value;
-	a->front->prev->value = swap;
-	swap = a->front->rank;
-	a->front->rank = a->front->prev->rank;
-	a->front->prev->rank = swap;
+	a->front = a->front->next;
 	write(1,"ra\n",3);
 }
 
 // void	rb(t_list *b)
 // {
-// 	int swap;
-// 	swap = b->front->value;
-// 	b->front->value = b->front->prev->value;
-// 	b->front->prev->value = swap;
-// 	swap = b->front->rank;
-// 	b->front->rank = b->front->prev->rank;
-// 	b->front->prev->rank = swap;
+// 	b->front = b->front->next;
 // 	write(1,"rb\n",3);
 // }
 
 // void	rr(t_list *a, t_list *b)
 // {
-// 	int swap;
-// 	swap = a->front->value;
-// 	a->front->value = a->front->prev->value;
-// 	a->front->prev->value = swap;
-// 	swap = a->front->rank;
-// 	a->front->rank = a->front->prev->rank;
-// 	a->front->prev->rank = swap;
-
-// 	swap = b->front->value;
-// 	b->front->value = b->front->prev->value;
-// 	b->front->prev->value = swap;
-// 	swap = b->front->rank;
-// 	b->front->rank = b->front->prev->rank;
-// 	b->front->prev->rank = swap;
+// 	a->front = a->front->next;
+// 	b->front = b->front->next;
 // 	write(1,"rr\n",3);
 // }
 
-// void	rra(t_stack *a,t_stack *b)
-// {
-// 	write(1,"rra\n",4);
-// }
+void	rra(t_list *a)
+{
+	a->front = a->front->prev;
+	write(1,"rra\n",4);
+}
 
-// void	rrb(t_stack *a,t_stack *b)
+// void	rrb(t_list *b)
 // {
+// 	b->front = b->front->prev;
 // 	write(1,"rrb\n",4);
 // }
 
-// void	rrr(t_stack *a,t_stack *b)
+// void	rrr(t_list *a,t_list *b)
 // {
+// 	a->front = a->front->prev;
+// 	b->front = b->front->prev;
 // 	write(1,"rrr\n",4);
 // }

@@ -6,7 +6,7 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:21 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/02 17:08:08 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:24:02 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,5 @@ void				free_list(t_list *dummy);
 int					ft_atoi(const char *nptr);
 void				sa(t_list *a);
 void				ra(t_list *a);
-
+void				rra(t_list *a);
 #endif
