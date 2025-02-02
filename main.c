@@ -6,7 +6,7 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:02 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/01 20:00:41 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/02 11:27:22 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,16 @@
 
 int	main(int argc, char *argv[])
 {
-	t_front	*a;
-
+	t_list	a;
+	a.front =NULL;
 	// t_stack *b;
-	a = (t_front *)malloc(sizeof(t_front));
-	stack_new(a);
+	//a = (t_list *)malloc(sizeof(t_list));
+	//stack_new(a);
 	// b = stack_new();
 	// if (error_check(argc, argv, &a, &b))
 	// 	return (1);
-	stack_allow(a, argc, argv);
+	stack_input(&a, argc, argv);
+	
 	print_list(a->front);
 	sa(a->front);
 	print_list(a->front);

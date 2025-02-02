@@ -6,55 +6,33 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 17:01:05 by loremipsum        #+#    #+#             */
-/*   Updated: 2025/02/01 19:54:34 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/02 11:57:43 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insert_back_a(t_stack *dummy, int value)
+void	push_front(t_list *a, t_node *new_node) //値を入れる時これだと逆順になってしまう　そのためpaの時に使われる
 {
-	t_stack	*new_node;
-
-	new_node = malloc(sizeof(t_stack));
-	new_node->value = value;
-	new_node->prev = dummy->prev;
-	new_node->next = dummy;
-	dummy->prev->next = new_node;
-	dummy->prev = new_node;
+	new_node->next = a->front;
+	new_node->prev = a->front->prev;
+	a->front->prev = new_node;
+	a->front->prev->next = new_node;
+	a->front = new_node; //先頭を付け替え
 }
 
-void	print_list(t_stack *dummy)
+void	push_back(t_list *a, int value) //コマンドライン引数を入れる
 {
-	t_stack	*current;
+	t_node	*new_node;
 
-	current = dummy->next;
-	printf("リストの内容\n");
-	while (current != dummy)
-	{
-		printf("%d\n", current->value);
-		current = current->next;
-	}
-	printf("\n");
+	new_node = (t_node *)malloc(sizeof(t_node));
+	new_node->prev = a->front->prev;
+	new_node->next = a->front;
+	a->front->prev->next = new_node;
+	a->front->prev = new_node;
 }
 
-void	free_list(t_front *dummy)
-{
-	t_stack	*current;
-	t_stack	*temp;
-
-	current = dummy->front->next;
-	while (current != dummy->front)
-	{
-		temp = current;
-		current = current->next;
-		free(temp);
-	}
-	free(dummy->front);
-	free(dummy);
-}
-
-void	stack_allow(t_front *a, int argc, char *argv[])
+void	stack_input(t_list *a, int argc, char *argv[])
 {
 	int	i;
 	int	value;
@@ -64,7 +42,38 @@ void	stack_allow(t_front *a, int argc, char *argv[])
 	while (i < argc)
 	{
 		value = ft_atoi(argv[i]);
-		insert_back_a(a->front, value);
+		push_back(a, value);
 		i++;
 	}
 }
+
+// void	print_list(t_stack *dummy)
+// {
+// 	t_stack	*current;
+
+// 	current = dummy->next;
+// 	printf("リストの内容\n");
+// 	while (current != dummy)
+// 	{
+// 		printf("%d\n", current->value);
+// 		current = current->next;
+// 	}
+// 	printf("\n");
+// }
+
+// void	free_list(t_front *dummy)
+// {
+// 	t_stack	*current;
+// 	t_stack	*temp;
+
+// 	current = dummy->front->next;
+// 	while (current != dummy->front)
+// 	{
+// 		temp = current;
+// 		current = current->next;
+// 		free(temp);
+// 	}
+// 	free(dummy->front);
+// 	free(dummy);
+// }
+

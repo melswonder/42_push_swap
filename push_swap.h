@@ -6,7 +6,7 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:21 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/01 20:03:47 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/02 11:39:27 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,25 +23,27 @@
 // 	struct s_node	*next;
 // } t_node;
 
-typedef struct s_stack
+typedef struct s_node
 {
 	int				value;
 	int				rank;
-	struct s_stack	*prev;
-	struct s_stack	*next;
-}					t_stack;
+	struct s_node	*prev;
+	struct s_node	*next;
+}					t_node;
 
-typedef struct s_front
+/// @brief 
+/// @details pointer is first null is not node 
+typedef struct s_list
 {
-	t_stack			*front;
-}					t_front;
+	t_node			*front;
+}					t_list;
 
-void				stack_new(t_front *dummy);
+void				stack_new(t_node *dummy);
 int					ft_atoi(const char *nptr);
-void				free_list(t_front *dummy);
-void				print_list(t_stack *dummy);
-void				stack_allow(t_front *a, int argc, char *argv[]);
+void				free_list(t_list *dummy);
+void				print_list(t_node *dummy);
+void				stack_input(t_list *a, int argc, char *argv[]);
 
-void				sa(t_stack *a);
+void				sa(t_node *a);
 
 #endif
