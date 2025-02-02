@@ -6,26 +6,26 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:51:23 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/01 19:32:43 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/02 12:05:31 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack *a) //いっこしたと入れ替える
-{
-	int swap;
+// void	sa(t_list *a) //いっこしたと入れ替える
+// {
+// 	int swap;
 	
-	swap = a->value;
-	a->value = a->next->value;
-	a->next->value = swap;
+// 	swap = a->value;
+// 	a->value = a->next->value;
+// 	a->next->value = swap;
 	
-	swap = a->rank;
-	a->rank = a->next->rank;
-	a->next->rank = swap;
+// 	swap = a->rank;
+// 	a->rank = a->next->rank;
+// 	a->next->rank = swap;
 
-	write(1,"sa\n",3);
-}
+// 	write(1,"sa\n",3);
+// }
 
 // void	sb(t_stack *b)
 // {

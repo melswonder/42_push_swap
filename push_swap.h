@@ -6,7 +6,7 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:21 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/02 11:39:27 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/02 12:06:21 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,19 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
-/// @brief 
-/// @details pointer is first null is not node 
+/// @brief
+/// @details pointer is first null is not node
 typedef struct s_list
 {
 	t_node			*front;
 }					t_list;
 
-void				stack_new(t_node *dummy);
 int					ft_atoi(const char *nptr);
 void				free_list(t_list *dummy);
-void				print_list(t_node *dummy);
+void				print_list(t_list *dummy);
 void				stack_input(t_list *a, int argc, char *argv[]);
-
+void				push_front(t_list *a, t_node *new_node);
+void				push_back(t_list *a, int value);
 void				sa(t_node *a);
 
 #endif

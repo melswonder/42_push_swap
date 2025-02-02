@@ -6,7 +6,7 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:02 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/02 11:27:22 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/02 12:11:23 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int	main(int argc, char *argv[])
 	// if (error_check(argc, argv, &a, &b))
 	// 	return (1);
 	stack_input(&a, argc, argv);
-	
-	print_list(a->front);
-	sa(a->front);
-	print_list(a->front);
-	printf("こんばんは\n");
-	free_list(a);
+	print_list(&a);
+	// print_list(a->front);
+	// sa(a->front);
+	// print_list(a->front);
+	// printf("こんばんは\n");
+	// free_list(a);
 	return (0);
 }

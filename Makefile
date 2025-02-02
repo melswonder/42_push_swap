@@ -6,12 +6,12 @@
 #    By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/01 17:12:17 by hirwatan          #+#    #+#              #
-#    Updated: 2025/02/01 18:13:41 by hirwatan         ###   ########.fr        #
+#    Updated: 2025/02/02 12:04:30 by hirwatan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-SRCS = command_list.c error_check.c push_swap_utils.c stack_new_delete.c stack.c main.c
+SRCS = command_list.c error_check.c push_swap_utils.c stack.c main.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 CFLAG = -Wall -Wextra -Werror -I .
