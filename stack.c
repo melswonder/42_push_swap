@@ -6,13 +6,14 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 17:01:05 by loremipsum        #+#    #+#             */
-/*   Updated: 2025/02/02 16:53:16 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/04 17:24:34 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_front(t_list *a, t_node *new_node)//値を入れる時これだと逆順になってしまう　そのためpaの時に使われる
+void	push_front(t_list *a, t_node *new_node)
+		//値を入れる時これだと逆順になってしまう　そのためpaの時に使われる
 {
 	new_node->next = a->front;
 	new_node->prev = a->front->prev;
@@ -48,7 +49,7 @@ void	print_list(t_list *stack)
 	printf("front");
 	while (1)
 	{
-		printf(" ->rank%d[%d]",cur->rank, cur->value);
+		printf(" ->rank%d[%d]", cur->rank, cur->value);
 		cur = cur->next;
 		if (cur == stack->front)
 			break ;
@@ -58,24 +59,38 @@ void	print_list(t_list *stack)
 
 void	free_list(t_list *stack)
 {
-	t_node *cur;
-	t_node *next;
+	t_node	*cur;
+	t_node	*next;
+
 	cur = stack->front;
-	while (cur!=NULL)
+	while (cur != NULL)
 	{
 		next = cur->next;
 		printf("free\n");
 		free(cur);
 		cur = next;
-		if(cur==stack->front)
-			break;
+		if (cur == stack->front)
+			break ;
 	}
 }
 
-void	stack_input(t_list *a, int argc, char *argv[])
+void	create_empty_stack(t_list *b)
 {
-	int	i;
-	int	value;
+	t_node	*new_node;
+
+	new_node = (t_node *)malloc(sizeof(t_node));
+	if (b->front == NULL)
+	{
+		new_node->next = new_node;
+		new_node->prev = new_node;
+		b->front = new_node;
+	}
+}
+
+void	stack_input(t_list *a, t_list *b, int argc, char *argv[])
+{
+	int i;
+	int value;
 
 	value = 0;
 	i = 1;
@@ -85,5 +100,6 @@ void	stack_input(t_list *a, int argc, char *argv[])
 		push_back(a, value);
 		i++;
 	}
+	create_empty_stack(b);
 	stack_rank(a);
 }

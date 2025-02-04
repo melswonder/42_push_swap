@@ -6,23 +6,28 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:51:23 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/02 17:30:18 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/04 19:39:22 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	pop
+void	push
+void	rotat
+
+
 void	sa(t_list *a) //いっこしたと入れ替える
 {
 	int swap;
-	
+
 	swap = a->front->value;
 	a->front->value = a->front->next->value;
 	a->front->next->value = swap;
 	swap = a->front->rank;
 	a->front->rank = a->front->next->rank;
 	a->front->next->rank = swap;
-	write(1,"sa\n",3);
+	write(1, "sa\n", 3);
 }
 
 // void	sb(t_list *b)
@@ -38,41 +43,56 @@ void	sa(t_list *a) //いっこしたと入れ替える
 // 	write(1,"sb\n",3);
 // }
 
-// void	ss(t_list *a,t_list *b)
+
+//pop push delete のコマンドを作る。
+void	ss(t_list *a,t_list *b)
+{
+	int swap;
+
+	swap = a->front->value;
+	a->front->value = a->front->next->value;
+	a->front->next->value = swap;
+	swap = a->front->rank;
+	a->front->rank = a->front->next->rank;
+	a->front->next->rank = swap;
+
+	swap = b->front->value;
+	b->front->value = b->front->next->value;
+	b->front->next->value = swap;
+	swap = b->front->rank;
+	b->front->rank = b->front->next->rank;
+	b->front->next->rank = swap;
+	write(1,"ss\n",3);
+}
+
+// void	pa(t_list *a, t_list *b)
 // {
-// 	int swap;
-
-// 	swap = a->front->value;
-// 	a->front->value = a->front->next->value;
-// 	a->front->next->value = swap;
-// 	swap = a->front->rank;
-// 	a->front->rank = a->front->next->rank;
-// 	a->front->next->rank = swap;
-
-// 	swap = b->front->value;
-// 	b->front->value = b->front->next->value;
-// 	b->front->next->value = swap;
-// 	swap = b->front->rank;
-// 	b->front->rank = b->front->next->rank;
-// 	b->front->next->rank = swap;
-// 	write(1,"ss\n",3);
+// 	write(1, "pa\n", 3);
 // }
 
-// void	pa(t_list *a,t_list *b)
+// void	pb(t_list *a, t_list *b)
 // {
-	
-// 	write(1,"pa\n",3);
-// }
+// 	// t_node	*new_node;
 
-// void	pb(t_stack *a,t_stack *b)
-// {
-// 	write(1,"pb\n",3);
+// 	// new_node = (t_node *)malloc(sizeof(t_node));
+// 	// new_node->prev = b->front->prev;
+// 	// new_node->next = b->front->next;
+// 	b->front->prev = a->front->next;
+// 	b->front->prev = new_node;
+
+// 	a->front->prev = a->front->next;
+// 	a->front->next = a->front->prev;
+// 	new_node->value = a->front->value;
+// 	new_node->rank = a->front->rank;
+// 	a->front->next = a->front->prev;
+// 	a->front->prev = a->front->next;
+// 	write(1, "pb\n", 3);
 // }
 
 void	ra(t_list *a)
 {
 	a->front = a->front->next;
-	write(1,"ra\n",3);
+	write(1, "ra\n", 3);
 }
 
 // void	rb(t_list *b)
@@ -91,7 +111,7 @@ void	ra(t_list *a)
 void	rra(t_list *a)
 {
 	a->front = a->front->prev;
-	write(1,"rra\n",4);
+	write(1, "rra\n", 4);
 }
 
 // void	rrb(t_list *b)
