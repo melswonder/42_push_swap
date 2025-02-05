@@ -3,93 +3,97 @@
 /*                                                        :::      ::::::::   */
 /*   command_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: loremipsum <loremipsum@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:51:23 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/04 19:39:22 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:42:00 by loremipsum       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	pop
-void	push
-void	rotat
+/// @brief stack a node pop the param
+/// @param t_list
+/// @return pop the t_list front t_node
+t_node *pop_front(t_list *list)
+{
+	t_node *stack;
 
+	stack = (t_node *)malloc(sizeof(t_node));
+	stack->next = list->front->next;
+	stack->prev = list->front->prev;
+	stack->value = list->front->value;
+	stack->rank = list->front->rank;
+	return (stack);
+}
 
-void	sa(t_list *a) //いっこしたと入れ替える
+void remove_front_node(t_list *list)
+{
+	t_node *free_node;
+	free_node = list->front;
+	list->front->next->prev = list->front->prev;
+	list->front->prev->next = list->front->next;
+	list->front = list->front->next;
+	free(free_node);
+}
+
+void add_node(t_list *list,t_list *add)
+{
+	list->front->prev->next = add;
+	list->front->next->next = add;
+	list->front = list->front->prev;
+}
+
+void push(t_list *send, t_list *get)
+{
+	t_node *pop_node;
+	pop_node = pop_front(send);
+	remove_front_node(send);
+	add_node(get,pop_node);
+}
+
+void list_swap(t_list *list)
 {
 	int swap;
+	swap = list->front->value;
+	list->front->value = list->front->next->value;
+	list->front->next->value = swap;
+	swap = list->front->rank;
+	list->front->rank = list->front->next->rank;
+	list->front->next->rank = swap;
+}
 
-	swap = a->front->value;
-	a->front->value = a->front->next->value;
-	a->front->next->value = swap;
-	swap = a->front->rank;
-	a->front->rank = a->front->next->rank;
-	a->front->next->rank = swap;
+void sa(t_list *a) // いっこしたと入れ替える
+{
+	list_swap(a);
 	write(1, "sa\n", 3);
 }
 
-// void	sb(t_list *b)
-// {
-// 	int swap;
-
-// 	swap = b->front->value;
-// 	b->front->value = b->front->next->value;
-// 	b->front->next->value = swap;
-// 	swap = b->front->rank;
-// 	b->front->rank = b->front->next->rank;
-// 	b->front->next->rank = swap;
-// 	write(1,"sb\n",3);
-// }
-
-
-//pop push delete のコマンドを作る。
-void	ss(t_list *a,t_list *b)
+void sb(t_list *b)
 {
-	int swap;
-
-	swap = a->front->value;
-	a->front->value = a->front->next->value;
-	a->front->next->value = swap;
-	swap = a->front->rank;
-	a->front->rank = a->front->next->rank;
-	a->front->next->rank = swap;
-
-	swap = b->front->value;
-	b->front->value = b->front->next->value;
-	b->front->next->value = swap;
-	swap = b->front->rank;
-	b->front->rank = b->front->next->rank;
-	b->front->next->rank = swap;
-	write(1,"ss\n",3);
+	list_swap(b);
+	write(1, "sb\n", 3);
 }
 
-// void	pa(t_list *a, t_list *b)
+void ss(t_list *a, t_list *b)
+{
+	list_swap(a);
+	list_swap(b);
+	write(1, "ss\n", 3);
+}
+
+// void pa(t_list *a, t_list *b)
 // {
+// 	
 // 	write(1, "pa\n", 3);
 // }
 
-// void	pb(t_list *a, t_list *b)
+// void pb(t_list *a, t_list *b)
 // {
-// 	// t_node	*new_node;
-
-// 	// new_node = (t_node *)malloc(sizeof(t_node));
-// 	// new_node->prev = b->front->prev;
-// 	// new_node->next = b->front->next;
-// 	b->front->prev = a->front->next;
-// 	b->front->prev = new_node;
-
-// 	a->front->prev = a->front->next;
-// 	a->front->next = a->front->prev;
-// 	new_node->value = a->front->value;
-// 	new_node->rank = a->front->rank;
-// 	a->front->next = a->front->prev;
-// 	a->front->prev = a->front->next;
 // 	write(1, "pb\n", 3);
 // }
 
-void	ra(t_list *a)
+void ra(t_list *a)
 {
 	a->front = a->front->next;
 	write(1, "ra\n", 3);
@@ -108,7 +112,7 @@ void	ra(t_list *a)
 // 	write(1,"rr\n",3);
 // }
 
-void	rra(t_list *a)
+void rra(t_list *a)
 {
 	a->front = a->front->prev;
 	write(1, "rra\n", 4);

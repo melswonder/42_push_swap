@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: loremipsum <loremipsum@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:02 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/04 17:37:30 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:46:51 by loremipsum       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,23 @@
 // void push_swap(t_list *a,t_list *b)
 // {
 // 	Coordinate_Compression(&a,&b);
-
+	
 // }
 
 int	main(int argc, char *argv[])
 {
 	t_list	a;
-	t_list	b;
-
-	a.front = NULL;
-	b.front = NULL;
-	// if (error_check(argc, argv))
+	// t_list	b;
+	a.front =NULL;
+	// if (error_check(argc, argv, &a, &b))
 	// 	return (1);
-	stack_input(&a,&b, argc, argv); //値を入れ終わり　ランク付け終わり
+	stack_input(&a, argc, argv); //値を入れ終わり　ランク付け終わり
 	// push_swap(&a,&b);
 	print_list(&a);
-	print_list(&b);
-	printf("NOT PB\n");
-	pb(&a,&b);
+	remove_front_node(&a);
 	print_list(&a);
-	print_list(&b);
-	printf("PB\n");
+	// rra(&a);
+	// print_list(&a);
 	free_list(&a);
-	// free_list(&b);
 	return (0);
 }
