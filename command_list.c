@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loremipsum <loremipsum@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:51:23 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/05 16:42:00 by loremipsum       ###   ########.fr       */
+/*   Updated: 2025/02/05 21:56:42 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 /// @brief stack a node pop the param
 /// @param t_list
 /// @return pop the t_list front t_node
-t_node *pop_front(t_list *list)
+t_node	*pop_front(t_list *list)
 {
-	t_node *stack;
+	t_node	*stack;
 
 	stack = (t_node *)malloc(sizeof(t_node));
 	stack->next = list->front->next;
@@ -27,34 +27,51 @@ t_node *pop_front(t_list *list)
 	return (stack);
 }
 
-void remove_front_node(t_list *list)
+void	remove_front_node(t_list *list) // bukkowa
 {
-	t_node *free_node;
+	t_node	*free_node;
+
 	free_node = list->front;
 	list->front->next->prev = list->front->prev;
 	list->front->prev->next = list->front->next;
 	list->front = list->front->next;
 	free(free_node);
 }
+void	add_node_end(t_list *list, t_node *add)
+{
+	add->next = list->front;
+	add->prev = list->front->prev;
+	list->front->prev->next = add;
+	list->front->prev = add;
+}
 
-void add_node(t_list *list,t_list *add)
+// bukkoware
+void	add_node_front(t_list *list, t_node *add)
 {
 	list->front->prev->next = add;
-	list->front->next->next = add;
-	list->front = list->front->prev;
+	add->next = list->front;
+	add->prev = list->front->prev;
+	list->front = add;
 }
 
-void push(t_list *send, t_list *get)
-{
-	t_node *pop_node;
-	pop_node = pop_front(send);
-	remove_front_node(send);
-	add_node(get,pop_node);
-}
+//bukkowa
+// void	push(t_list *send, t_list *get)
+// {
+// 	t_node	*pop_node;
 
-void list_swap(t_list *list)
+//     if (!send->front)
+//         return ;
+// 	pop_node = (t_node *)malloc(sizeof(t_node));
+// 	pop_node = pop_front(send);
+// 	remove_front_node(send);
+// 	add_node_front(get, pop_node);
+// }
+
+
+void	list_swap(t_list *list)
 {
-	int swap;
+	int	swap;
+
 	swap = list->front->value;
 	list->front->value = list->front->next->value;
 	list->front->next->value = swap;
@@ -63,37 +80,38 @@ void list_swap(t_list *list)
 	list->front->next->rank = swap;
 }
 
-void sa(t_list *a) // いっこしたと入れ替える
+void	sa(t_list *a) // いっこしたと入れ替える
 {
 	list_swap(a);
 	write(1, "sa\n", 3);
 }
 
-void sb(t_list *b)
+void	sb(t_list *b)
 {
 	list_swap(b);
 	write(1, "sb\n", 3);
 }
 
-void ss(t_list *a, t_list *b)
+void	ss(t_list *a, t_list *b)
 {
 	list_swap(a);
 	list_swap(b);
 	write(1, "ss\n", 3);
 }
 
-// void pa(t_list *a, t_list *b)
-// {
-// 	
-// 	write(1, "pa\n", 3);
-// }
+void	pa(t_list *a, t_list *b)
+{
+	push(a, b);
+	write(1, "pa\n", 3);
+}
 
-// void pb(t_list *a, t_list *b)
-// {
-// 	write(1, "pb\n", 3);
-// }
+void	pb(t_list *a, t_list *b)
+{
+	push(b, a);
+	write(1, "pb\n", 3);
+}
 
-void ra(t_list *a)
+void	ra(t_list *a)
 {
 	a->front = a->front->next;
 	write(1, "ra\n", 3);
@@ -112,7 +130,7 @@ void ra(t_list *a)
 // 	write(1,"rr\n",3);
 // }
 
-void rra(t_list *a)
+void	rra(t_list *a)
 {
 	a->front = a->front->prev;
 	write(1, "rra\n", 4);

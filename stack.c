@@ -6,13 +6,14 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 17:01:05 by loremipsum        #+#    #+#             */
-/*   Updated: 2025/02/02 16:53:16 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/05 21:21:56 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_front(t_list *a, t_node *new_node)//値を入れる時これだと逆順になってしまう　そのためpaの時に使われる
+void	push_front(t_list *a, t_node *new_node)
+//値を入れる時これだと逆順になってしまう　そのためpaの時に使われる
 {
 	new_node->next = a->front;
 	new_node->prev = a->front->prev;
@@ -32,12 +33,9 @@ void	push_back(t_list *a, int value) //コマンドライン引数を入れる
 		new_node->prev = new_node;
 		a->front = new_node;
 	}
-	new_node->prev = a->front->prev;
-	new_node->next = a->front;
-	a->front->prev->next = new_node;
-	a->front->prev = new_node;
 	new_node->value = value;
 	new_node->rank = 0;
+	add_node_end(a, new_node);//後で改造するかも
 }
 
 void	print_list(t_list *stack)
@@ -46,9 +44,14 @@ void	print_list(t_list *stack)
 
 	cur = stack->front;
 	printf("front");
+	if (stack == NULL)
+	{
+		printf(" ->NULL\n");
+		return ;
+	}
 	while (1)
 	{
-		printf(" ->rank%d[%d]",cur->rank, cur->value);
+		printf(" ->rank%d[%d]", cur->rank, cur->value);
 		cur = cur->next;
 		if (cur == stack->front)
 			break ;
@@ -58,24 +61,37 @@ void	print_list(t_list *stack)
 
 void	free_list(t_list *stack)
 {
-	t_node *cur;
-	t_node *next;
+	t_node	*cur;
+	t_node	*next;
+
 	cur = stack->front;
-	while (cur!=NULL)
+	while (cur != NULL)
 	{
 		next = cur->next;
 		printf("free\n");
 		free(cur);
 		cur = next;
-		if(cur==stack->front)
-			break;
+		if (cur == stack->front)
+			break ;
+	}
+}
+void	node_new(t_list *b)
+{
+	t_node*new_node;
+
+	new_node = (t_node *)malloc(sizeof(t_node));
+	if(b->front == NULL)
+	{
+		new_node->next = new_node;
+		new_node->prev = new_node;
+		b->front = new_node;
 	}
 }
 
-void	stack_input(t_list *a, int argc, char *argv[])
+void	stack_input(t_list *a, t_list *b, int argc, char *argv[])
 {
-	int	i;
-	int	value;
+	int i;
+	int value;
 
 	value = 0;
 	i = 1;
@@ -86,4 +102,5 @@ void	stack_input(t_list *a, int argc, char *argv[])
 		i++;
 	}
 	stack_rank(a);
+	node_new(b);
 }

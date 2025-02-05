@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: loremipsum <loremipsum@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:02 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/05 14:46:51 by loremipsum       ###   ########.fr       */
+/*   Updated: 2025/02/05 21:31:49 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,30 @@
 // void push_swap(t_list *a,t_list *b)
 // {
 // 	Coordinate_Compression(&a,&b);
-	
+
 // }
 
 int	main(int argc, char *argv[])
 {
 	t_list	a;
-	// t_list	b;
-	a.front =NULL;
+	t_list	b;
+
+	a.front = NULL;
+	b.front = NULL;
 	// if (error_check(argc, argv, &a, &b))
 	// 	return (1);
-	stack_input(&a, argc, argv); //値を入れ終わり　ランク付け終わり
+	// stack_input(&a, &b, argc, argv); //値を入れ終わり　ランク付け終わり
+	stack_input(&a, &b, argc, argv); //値を入れ終わり　ランク付け終わり
 	// push_swap(&a,&b);
 	print_list(&a);
-	remove_front_node(&a);
+	pb(&a, &b);
 	print_list(&a);
+	print_list(&b);
+	// print_list(&a);
+	// print_list(&b);
 	// rra(&a);
 	// print_list(&a);
 	free_list(&a);
+	free_list(&b);
 	return (0);
 }
