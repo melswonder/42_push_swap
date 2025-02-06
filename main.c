@@ -6,7 +6,7 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:02 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/05 21:31:49 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/06 20:27:33 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@ int	main(int argc, char *argv[])
 	// if (error_check(argc, argv, &a, &b))
 	// 	return (1);
 	// stack_input(&a, &b, argc, argv); //値を入れ終わり　ランク付け終わり
-	stack_input(&a, &b, argc, argv); //値を入れ終わり　ランク付け終わり
+	stack_input(&a, &b, argc, argv); //値を入れ終わり　ランク付け終わり correct
 	// push_swap(&a,&b);
 	print_list(&a);
 	pb(&a, &b);
 	print_list(&a);
 	print_list(&b);
+	pa(&a, &b);
+	print_list(&a);
 	// print_list(&a);
 	// print_list(&b);
 	// rra(&a);

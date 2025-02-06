@@ -6,7 +6,7 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 17:01:05 by loremipsum        #+#    #+#             */
-/*   Updated: 2025/02/05 21:21:56 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/06 20:43:44 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	push_back(t_list *a, int value) //コマンドライン引数を入れる
 	}
 	new_node->value = value;
 	new_node->rank = 0;
-	add_node_end(a, new_node);//後で改造するかも
+	add_node_end(a, new_node); //後で改造するかも
 }
 
 void	print_list(t_list *stack)
@@ -64,11 +64,13 @@ void	free_list(t_list *stack)
 	t_node	*cur;
 	t_node	*next;
 
+	if(!stack->front)
+		return;
 	cur = stack->front;
 	while (cur != NULL)
 	{
 		next = cur->next;
-		printf("free\n");
+		// printf("free\n");
 		free(cur);
 		cur = next;
 		if (cur == stack->front)
@@ -77,15 +79,12 @@ void	free_list(t_list *stack)
 }
 void	node_new(t_list *b)
 {
-	t_node*new_node;
+	t_node	*new_node;
 
 	new_node = (t_node *)malloc(sizeof(t_node));
-	if(b->front == NULL)
-	{
-		new_node->next = new_node;
-		new_node->prev = new_node;
-		b->front = new_node;
-	}
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	b->front = new_node;
 }
 
 void	stack_input(t_list *a, t_list *b, int argc, char *argv[])
@@ -102,5 +101,5 @@ void	stack_input(t_list *a, t_list *b, int argc, char *argv[])
 		i++;
 	}
 	stack_rank(a);
-	node_new(b);
+	b->front = NULL;
 }

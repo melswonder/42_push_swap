@@ -6,7 +6,7 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 15:51:23 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/05 21:56:42 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/06 20:48:39 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,32 @@ t_node	*pop_front(t_list *list)
 	t_node	*stack;
 
 	stack = (t_node *)malloc(sizeof(t_node));
-	stack->next = list->front->next;
-	stack->prev = list->front->prev;
+	stack->next = NULL;
+	stack->prev = NULL;
 	stack->value = list->front->value;
 	stack->rank = list->front->rank;
 	return (stack);
 }
 
-void	remove_front_node(t_list *list) // bukkowa
+void	remove_front_node(t_list *list) // list null dousuru?
 {
-	t_node	*free_node;
+	t_node *free_node;
 
+	if (!list->front)
+		return ;
 	free_node = list->front;
+	if (free_node->next == free_node)
+	{
+		free(free_node);
+		list->front = NULL;
+		return ;
+	}
 	list->front->next->prev = list->front->prev;
 	list->front->prev->next = list->front->next;
 	list->front = list->front->next;
 	free(free_node);
 }
+
 void	add_node_end(t_list *list, t_node *add)
 {
 	add->next = list->front;
@@ -48,25 +57,18 @@ void	add_node_end(t_list *list, t_node *add)
 // bukkoware
 void	add_node_front(t_list *list, t_node *add)
 {
+	if (!list->front)
+	{
+		add->next = add;
+		add->prev = add;
+		list->front = add;
+		return ;
+	}
 	list->front->prev->next = add;
 	add->next = list->front;
 	add->prev = list->front->prev;
 	list->front = add;
 }
-
-//bukkowa
-// void	push(t_list *send, t_list *get)
-// {
-// 	t_node	*pop_node;
-
-//     if (!send->front)
-//         return ;
-// 	pop_node = (t_node *)malloc(sizeof(t_node));
-// 	pop_node = pop_front(send);
-// 	remove_front_node(send);
-// 	add_node_front(get, pop_node);
-// }
-
 
 void	list_swap(t_list *list)
 {
@@ -101,13 +103,31 @@ void	ss(t_list *a, t_list *b)
 
 void	pa(t_list *a, t_list *b)
 {
-	push(a, b);
+	t_node	*pop_node;
+
+	if (!b->front)
+	{
+		printf("Error bのスタックがからの状態でpaしようとしています\n");
+		exit(0);
+	}
+	pop_node = pop_front(b);
+	remove_front_node(b);
+	add_node_front(a, pop_node);
 	write(1, "pa\n", 3);
 }
 
 void	pb(t_list *a, t_list *b)
 {
-	push(b, a);
+	t_node	*pop_node;
+
+	if (!a->front)
+	{
+		printf("Error aのスタックがからの状態でpbしようとしています\n");
+		exit(0); // exit
+	}
+	pop_node = pop_front(a);
+	remove_front_node(a);
+	add_node_front(b, pop_node);
 	write(1, "pb\n", 3);
 }
 

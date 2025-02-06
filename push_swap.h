@@ -6,7 +6,7 @@
 /*   By: hirwatan <hirwatan@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 17:48:21 by hirwatan          #+#    #+#             */
-/*   Updated: 2025/02/05 21:09:02 by hirwatan         ###   ########.fr       */
+/*   Updated: 2025/02/06 20:20:10 by hirwatan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void				free_list(t_list *dummy);
 int					ft_atoi(const char *nptr);
 
 t_node				*pop_front(t_list *list);
-void				push(t_list *send, t_list *get);
+void				push(t_list **send, t_list **get);
 void				list_swap(t_list *list);
 void				remove_front_node(t_list *list);
 void				add_node_front(t_list *list, t_node *add);
@@ -57,6 +57,7 @@ void				add_node_end(t_list *list, t_node *add);
 
 void				sa(t_list *a);
 void				ra(t_list *a);
+void				pa(t_list *a, t_list *b);
 void				pb(t_list *a, t_list *b);
 void				rra(t_list *a);
 #endif
